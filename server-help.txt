@@ -1,0 +1,70 @@
+Ubuntu 22.04
+
+apt update
+apt upgrade
+useradd -G sudo -s /bin/bash -m gogofox
+passwd gogofox
+haslo lol	
+mkdir .ssh
+nano authorized_keys
+wkleic pub key
+chmod -R 700 .ssh
+sudo nano /etc/ssh/sshd_config
+PermitRootLogin no
+PasswordAuthentication no
+MaxAuthTries 10
+ClientAliveInterval 300
+ClientAliveCountMax 1
+sshd -t
+sudo systemctl restart ssh.service
+haslo lol
+reboot
+
+
+==============
+
+
+ssh -i .\.ssh\vps-ssh gogofox@116.203.196.81
+
+sftp -i .\.ssh\vps-ssh gogofox@116.203.196.81
+
+
+https://community.hetzner.com/tutorials/basic-cloud-config
+https://community.hetzner.com/tutorials/securing-ssh#step-1---securing-the-ssh-service
+
+=====================
+
+sudo apt --assume-yes install nodejs npm python2 build-essential
+mkdir screeps-server
+cd screeps-server
+npm install screeps
+npm install screepsmod-auth
+npx screeps init
+npx screeps start
+setsid npx screeps start
+
+http://yourServerHostOrIP:21025/authmod/password/
+
+=================================
+
+ ----------------------docker run -d -it -p 25565:25565 -e EULA=TRUE -e ONLINE_MODE=FALSE itzg/minecraft-server
+ 
+ 
+ 
+tar -cvf minecraftworld.tar -C 'C:\Users\GogoPC\AppData\Roaming\.minecraft\saves\1_21_1 - Mob Arena Datapack' *
+scp -r -i .\.ssh\vps-ssh .\minecraftworld.tar gogofox@116.203.196.81:/home/gogofox/minecraft-server/data/world/
+scp -r -i .\.ssh\vps-ssh '.\Desktop\VPS Config\minecraft\docker-compose.yml' gogofox@116.203.196.81:/home/gogofox/minecraft-server/
+
+cd minecraft-server
+tar -xvf data/world/minecraftworld.tar -C data/world/
+
+
+
+docker compose up -d
+docker exec minecraft-server-minecraft-1 rcon-cli op GogoFox
+
+
+
+
+
+

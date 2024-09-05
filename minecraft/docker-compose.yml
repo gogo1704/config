@@ -1,0 +1,23 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    stdin_open: true
+    tty: true
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./data:/data
+    environment:
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"
+      FORCE_WORLD_COPY: "FALSE"
+      DIFFICULTY: "HARD"
+      OVERRIDE_ICON: "TRUE"
+      ICON: "https://media.discordapp.net/attachments/810863226609991700/1158079355101138974/qum0zps5b9qb1.png?ex=66da8632&is=66d934b2&hm=6ed8b495ec9cc8862bb75d1a94808637fc9eff75b7d25f1caa91790ce8f0efe2&=&format=webp&quality=lossless"
+      SNOOPER_ENABLED: "FALSE"
+      SPAWN_PROTECTION: 0
+      SERVER_NAME: "GogoFox Minecraft"
+      ENABLE_COMMAND_BLOCK: "TRUE"
+      RCON_CMDS_STARTUP:  |-
+        op GogoFox
+    restart: unless-stopped
