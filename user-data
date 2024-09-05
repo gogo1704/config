@@ -69,6 +69,6 @@ runcmd:
   - npx screeps init
   - cd /home/gogofox/minecraft-server
   - newgrp docker
-  - curl -o docker-compose.yml https://raw.githubusercontent.com/itzg/docker-minecraft-server/master/examples/docker-compose.yml
+  - curl -o docker-compose.yml https://raw.githubusercontent.com/gogo1704/config/main/minecraft/docker-compose.yml
   - ufw enable
   - systemctl enable fail2ban
