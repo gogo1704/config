@@ -33,10 +33,10 @@ write_files:
 - path: /home/gogofox/minecraft-server/docker-compose.yml
   owner: 'gogofox:gogofox'
   defer: true
-- path: /home/gogofox/minecraft-server/data/world/
+- path: /home/gogofox/minecraft-server/data/world/.
   owner: 'gogofox:gogofox'
   defer: true
-- path: /home/gogofox/screeps-server/
+- path: /home/gogofox/screeps-server/.
   owner: 'gogofox:gogofox'
   defer: true
 power_state:
