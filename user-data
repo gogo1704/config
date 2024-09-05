@@ -31,12 +31,8 @@ package_update: true
 package_upgrade: true
 write_files:
 - path: /home/gogofox/minecraft-server/docker-compose.yml
-  owner: 'gogofox:gogofox'
-  defer: true
-- path: /home/gogofox/minecraft-server/data/world/.
-  owner: 'gogofox:gogofox'
-  defer: true
-- path: /home/gogofox/screeps-server/.
+  source:
+    uri: https://raw.githubusercontent.com/gogo1704/config/main/minecraft/docker-compose.yml
   owner: 'gogofox:gogofox'
   defer: true
 power_state:
@@ -63,12 +59,15 @@ runcmd:
   - sed -i '$a AllowUsers gogofox' /etc/ssh/sshd_config
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - ufw allow OpenSSH
+  - mkdir -p /home/gogofox/screeps-server/
   - cd /home/gogofox/screeps-server
   - npm install screeps
   - npm install screepsmod-auth
   - npx screeps init
+  - mkdir -p /home/gogofox/minecraft-server/data/world
   - cd /home/gogofox/minecraft-server
   - newgrp docker
-  - curl -o docker-compose.yml https://raw.githubusercontent.com/gogo1704/config/main/minecraft/docker-compose.yml
+  - curl -o docker-compose.yml 
+  - chown -R gogofox:gogofox /home/gogofox/*
   - ufw enable
   - systemctl enable fail2ban
