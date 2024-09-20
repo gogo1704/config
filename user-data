@@ -61,6 +61,7 @@ runcmd:
   - cd /home/gogofox/screeps-server
   - npm install screeps
   - npm install screepsmod-auth
+  - npm install discord.js
   - npx screeps init
   - mkdir -p /home/gogofox/minecraft-server/data/world
   - cd /home/gogofox/minecraft-server
