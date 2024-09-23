@@ -57,6 +57,7 @@ runcmd:
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - ufw allow OpenSSH
   - mkdir -p /home/gogofox/screeps-server/
+  - touch ~/.bashrc
   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
   - source ~/.bashrc
   - nvm install 20
