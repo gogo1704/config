@@ -56,13 +56,9 @@ runcmd:
   - sed -i '$a AllowUsers gogofox' /etc/ssh/sshd_config
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - ufw allow OpenSSH
-  - ls
-  - ls /
-  - ls ~
-  - mkdir -p ~/
-  - touch ~/.bashrc
-  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-  - source ~/.bashrc
+  - ls /root/ -a
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | NVM_DIR="/root" | bash
+  - source /root/.bashrc
   - nvm install 20
   - mkdir -p /home/gogofox/screeps-server/
   - cd /home/gogofox/screeps-server
