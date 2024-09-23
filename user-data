@@ -16,7 +16,6 @@ apt:
 packages:
   - fail2ban
   - ufw
-  - nodejs
   - npm
   - python2
   - build-essential
@@ -58,6 +57,9 @@ runcmd:
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - ufw allow OpenSSH
   - mkdir -p /home/gogofox/screeps-server/
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+  - source ~/.bashrc
+  - nvm install 20
   - cd /home/gogofox/screeps-server
   - npm install screeps
   - npm install screepsmod-auth
@@ -66,6 +68,9 @@ runcmd:
   - cd /home/gogofox/minecraft-server
   - newgrp docker
   - curl -o docker-compose.yml https://raw.githubusercontent.com/gogo1704/config/main/minecraft/docker-compose.yml
+  - git clone https://github.com/gogo1704/discord-fox.git /home/gogofox/discord-fox
+  - cd /home/gogofox/discord-fox
+  - npm install --omit=dev
   - chown -R gogofox:gogofox /home/gogofox/*
   - ufw enable
   - systemctl enable fail2ban
