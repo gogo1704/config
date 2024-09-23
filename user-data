@@ -56,11 +56,15 @@ runcmd:
   - sed -i '$a AllowUsers gogofox' /etc/ssh/sshd_config
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - ufw allow OpenSSH
-  - mkdir -p /home/gogofox/screeps-server/
+  - ls
+  - ls /
+  - ls ~
+  - mkdir -p ~/
   - touch ~/.bashrc
   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
   - source ~/.bashrc
   - nvm install 20
+  - mkdir -p /home/gogofox/screeps-server/
   - cd /home/gogofox/screeps-server
   - npm install screeps
   - npm install screepsmod-auth
