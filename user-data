@@ -65,7 +65,7 @@ runcmd:
   - chmod 755 /etc/profile.d/nvm.sh
   - chmod 777 /usr/local/nvm/
   - /etc/profile.d/nvm.sh
-  - nvm install 20
+  - /usr/local/nvm/nvm.sh install 20
   - mkdir -p /home/gogofox/screeps-server/
   - cd /home/gogofox/screeps-server
   - npm install screeps
