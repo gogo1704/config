@@ -26,6 +26,7 @@ packages:
   - docker-buildx-plugin
   - docker-compose-plugin
   - micro
+  - xclip
 package_update: true
 package_upgrade: true
 write_files:
@@ -44,7 +45,9 @@ final_message: |
   datasource: $datasource
   uptime: $uptime
 runcmd:
+  - echo 'Renaming the inital log file for easier reading.'
   - mv /var/log/cloud-init-output.log /var/log/cloud-init-output-install.log
+  - echo 'SSH, f2b and ufw setup.'
   - sed -i -e '/^\(#\|\)PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)PasswordAuthentication/s/^.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)KbdInteractiveAuthentication/s/^.*$/KbdInteractiveAuthentication no/' /etc/ssh/sshd_config
@@ -57,6 +60,9 @@ runcmd:
   - sed -i '$a AllowUsers gogofox' /etc/ssh/sshd_config
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - ufw allow OpenSSH
+  - echo 'Changing the hotkey for removing word to Ctrl-Bckspc.'
+  - stty werase ^H
+  - echo 'Installing and configuring services.'
   - npm install -g n
   - n lts
   - mkdir -p /home/gogofox/screeps-server/
@@ -72,5 +78,6 @@ runcmd:
   - cd /home/gogofox/discord-fox
   - npm install --omit=dev
   - chown -R gogofox:gogofox /home/gogofox/*
+  - echo 'Enabling ufw and f2b'
   - ufw enable
   - systemctl enable fail2ban
