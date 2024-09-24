@@ -26,7 +26,6 @@ packages:
   - docker-buildx-plugin
   - docker-compose-plugin
   - micro
-  - xclip
 package_update: true
 package_upgrade: true
 write_files:
