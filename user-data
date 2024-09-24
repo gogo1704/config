@@ -44,6 +44,7 @@ final_message: |
   datasource: $datasource
   uptime: $uptime
 runcmd:
+  - mv /var/log/cloud-init-output.log /var/log/cloud-init-output-install.log
   - sed -i -e '/^\(#\|\)PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)PasswordAuthentication/s/^.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)KbdInteractiveAuthentication/s/^.*$/KbdInteractiveAuthentication no/' /etc/ssh/sshd_config
