@@ -58,11 +58,11 @@ runcmd:
   - ufw allow OpenSSH
   - mkdir -p /usr/local/nvm
   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | NVM_DIR=/usr/local/nvm bash
-  - echo #!/usr/bin/env bash > /etc/profile.d/nvm.sh
-  - echo export NVM_DIR="/usr/local/nvm" >> /etc/profile.d/nvm.sh
-  - echo [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" >> /etc/profile.d/nvm.sh
+  - echo '#!/usr/bin/env bash' > /etc/profile.d/nvm.sh
+  - echo 'export NVM_DIR="/usr/local/nvm"' >> /etc/profile.d/nvm.sh
+  - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /etc/profile.d/nvm.sh
   - chmod 755 /etc/profile.d/nvm.sh
-  - /etc/profile.d/nvm.sh
+  - bash /etc/profile.d/nvm.sh
   - nvm install 20
   - mkdir -p /home/gogofox/screeps-server/
   - cd /home/gogofox/screeps-server
