@@ -34,7 +34,10 @@ tar -xvf data/world/minecraftworld.tar -C data/world/
 docker compose up -d
 docker exec minecraft-server-minecraft-1 rcon-cli op GogoFox
 
+============================
 
+cd redlib
+docker compose up -d
 
 
 
