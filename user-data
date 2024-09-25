@@ -64,6 +64,7 @@ runcmd:
   - echo 'Installing and configuring services.'
   - npm install -g n
   - n lts
+  - newgrp docker
   - mkdir -p /home/gogofox/screeps-server/
   - cd /home/gogofox/screeps-server
   - npm install screeps
@@ -71,11 +72,11 @@ runcmd:
   - npx screeps init
   - mkdir -p /home/gogofox/minecraft-server/data/world
   - cd /home/gogofox/minecraft-server
-  - newgrp docker
   - curl -o docker-compose.yml https://raw.githubusercontent.com/gogo1704/config/main/minecraft/docker-compose.yml
   - git clone https://github.com/gogo1704/discord-fox.git /home/gogofox/discord-fox
   - cd /home/gogofox/discord-fox
   - npm install --omit=dev
+  - mkdir -p /home/gogofox/redlib
   - chown -R gogofox:gogofox /home/gogofox/*
   - echo 'Enabling ufw and f2b'
   - ufw enable
