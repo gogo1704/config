@@ -59,6 +59,7 @@ runcmd:
   - sed -i '$a AllowUsers gogofox' /etc/ssh/sshd_config
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - ufw allow OpenSSH
+  - ufw allow 8000
   - echo 'Changing the hotkey for removing word to Ctrl-Bckspc.'
   - stty werase ^H
   - echo 'Installing and configuring services.'
