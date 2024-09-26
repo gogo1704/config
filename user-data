@@ -44,9 +44,6 @@ final_message: |
   datasource: $datasource
   uptime: $uptime
 runcmd:
-  - echo 'Renaming the inital log file for easier reading.'
-  - cp /var/log/cloud-init-output.log /var/log/cloud-init-output-install.log
-  - rm /var/log/cloud-init-output.log
   - echo 'SSH, f2b and ufw setup.'
   - sed -i -e '/^\(#\|\)PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)PasswordAuthentication/s/^.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
