@@ -6,12 +6,13 @@ services:
     ports:
       - 8080:8080 # Specify `127.0.0.1:8080:8080` instead if using a reverse proxy
     user: nobody
-    read_only: true
+    read_only: false
     security_opt:
       - no-new-privileges:true
       # - seccomp=seccomp-redlib.json
     cap_drop:
       - ALL
+    env_file: .env
     networks:
       - redlib
     healthcheck:
