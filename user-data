@@ -81,6 +81,7 @@ runcmd:
   - mkdir -p /home/gogofox/redlib
   - cd /home/gogofox/redlib
   - curl -o compose.yaml https://raw.githubusercontent.com/gogo1704/config/refs/heads/main/redlib/compose.yaml
+  - curl -o .env https://raw.githubusercontent.com/gogo1704/config/refs/heads/main/redlib/.env
   - chown -R gogofox:gogofox /home/gogofox/*
   - echo 'Enabling ufw and f2b'
   - ufw enable
